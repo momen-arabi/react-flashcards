@@ -34,25 +34,49 @@ const questions = [
 ];
 
 export default function App() {
+  // const [flip, setFlip] = useState(false);
   return (
-    <div className="flashcards">
-      {questions.map((card) => (
-        <Flashcard card={card} key={card.id} />
-      ))}
-    </div>
+    <>
+      <h1 className="uppercase my-12 text-center text-7xl font-semibold flex items-center justify-center gap-4">
+        <span className="text-4xl">🎴🎴</span> <span>Flip Flip</span> <span className="text-4xl">🎴🎴</span>
+      </h1>
+      <div className="flashcards">
+        {questions.map((card) => (
+          <Flashcard card={card} key={card.id} ind={card.id} />
+        ))}
+      </div>
+    </>
   );
 }
 
-function Flashcard({ card }) {
+function Flashcard({ card, ind }) {
   const [isFlip, setIsFlip] = useState(false);
 
-  function handleClick() {
-    setIsFlip((flip) => !flip);
-  }
+  // function handleClick(id) {
+  //   if (checkIndex(id)) setIsFlip(true);
+  //   else setIsFlip(false);
+  // }
+
+  const handleClick = (id) => {
+    if (checkIndex(id) > -1) {
+      setIsFlip(true);
+      console.log("Check", id);
+    } else {
+      console.log("Not Check", id);
+      setIsFlip(false);
+    }
+  };
+
+  const checkIndex = (id) => {
+    return questions.findIndex((r) => r.id === ind);
+  };
 
   return (
-    <div onClick={handleClick} className={`flashcard ${isFlip ? `selected` : ""}`}>
-      {isFlip ? card.answer : card.question}
+    <div className="card-container" onClick={() => handleClick(ind)}>
+      <div className={`flashcard${isFlip ? " flip" : ""}`}>
+        <div className="front">{card.question}</div>
+        <div className="back">{card.answer}</div>
+      </div>
     </div>
   );
 }
