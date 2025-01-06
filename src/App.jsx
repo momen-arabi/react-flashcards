@@ -38,8 +38,8 @@ export default function App() {
 
   return (
     <>
-      <h1 className="uppercase my-12 text-center text-8xl font-semibold flex items-center justify-center gap-4">
-        <span className="text-4xl">🎴🎴</span> <span>Flip Flip</span> <span className="text-4xl">🎴🎴</span>
+      <h1 className="uppercase my-12 text-center text-7xl font-semibold flex items-center justify-center gap-4">
+        <span className="text-3xl">🎴🎴</span> <span>Flip Flip</span> <span className="text-3xl">🎴🎴</span>
       </h1>
       <div className="flashcards">
         {questions.map((card) => (
