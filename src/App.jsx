@@ -34,7 +34,7 @@ const questions = [
 ];
 
 export default function App() {
-  const [flip, setFlip] = useState("");
+  const [cardId, setCardId] = useState("");
 
   return (
     <>
@@ -43,17 +43,21 @@ export default function App() {
       </h1>
       <div className="flashcards">
         {questions.map((card) => (
-          <Flashcard flip={flip} card={card} key={card.id} ind={card.id} stateChanger={setFlip} />
+          <Flashcard key={card.id} card={card} id={card.id} cardId={cardId} stateChanger={setCardId} />
         ))}
       </div>
     </>
   );
 }
 
-function Flashcard({ card, ind, stateChanger, flip }) {
+function Flashcard({ card, id, stateChanger, cardId }) {
+  function handleClick() {
+    stateChanger(cardId === id ? "" : id);
+  }
+
   return (
-    <div className="card-container" onClick={() => stateChanger(ind)}>
-      <div className={`flashcard${ind === flip ? " flip" : ""}`}>
+    <div className="card-container" onClick={handleClick}>
+      <div className={`flashcard${id === cardId ? " flip" : ""}`}>
         <div className="front">{card.question}</div>
         <div className="back">{card.answer}</div>
       </div>
