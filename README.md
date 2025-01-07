@@ -5,6 +5,7 @@ React Flashcards is a web application that allows users to create, manage, and s
 ## Features
 
 - Only one flashcard can be flipped at a time to reveal its answer, ensuring others remain on the question side.
+- The flashcard itself can be toggle flipped between the question side and the answer side.
 - Demonstrates the two-way communication of state between the parent and child components, highlighting dynamic state management.
 
 ## Demo
